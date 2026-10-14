@@ -95,3 +95,9 @@ templates/                # Vistas Jinja2 (Bootstrap)
 database_students.sql     # Datos iniciales para PostgreSQL
 .env.example               # Plantilla de variables de entorno
 ```
+
+## Evidencias
+
+![Captura de la página](evidencias/Captura%20de%20la%20pagina.png)
+![Captura de la terminal](evidencias/Captura%20de%20la%20terminal%20Visual.png)
+![Captura del contenedor](evidencias/Captura%20del%20contenedor.png)
