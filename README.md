@@ -101,3 +101,39 @@ database_students.sql     # Datos iniciales para PostgreSQL
 ![Captura de la página](evidencias/Captura%20de%20la%20pagina.png)
 ![Captura de la terminal](evidencias/Captura%20de%20la%20terminal%20Visual.png)
 ![Captura del contenedor](evidencias/Captura%20del%20contenedor.png)
+
+
+## Docker Compose con PostgreSQL
+
+En esta parte se agregó un archivo `docker-compose.yml` que levanta dos servicios juntos:
+
+- **postgres**: contenedor con la imagen `postgres:16-alpine`. Al crearse por primera vez, carga automáticamente el archivo `database_students.sql`, que crea la tabla `students` e inserta tres alumnos. Incluye un healthcheck para saber cuándo la base de datos está lista.
+- **pythonapp**: contenedor construido con el `Dockerfile` del proyecto. Espera a que Postgres esté saludable y se conecta a él con las variables de entorno `DB_HOST`, `DB_PORT`, `DB_USER`, `DB_PASSWORD` y `DB_NAME`. Se publica en el puerto 5001.
+
+### Comandos utilizados
+
+Primera vez (construye las imágenes):
+
+```bash
+docker-compose up --build
+```
+
+Siguientes veces:
+
+```bash
+docker-compose up
+```
+
+Para detener los servicios:
+
+```bash
+docker-compose stop
+```
+
+La aplicación se consulta en `http://127.0.0.1:5001/`.
+
+### Evidencias de Docker Compose
+
+![Terminal con docker-compose](evidencias/Captura%20del%20docker-build%20arrancando.png)
+![Página con los alumnos](evidencias/Captura%20del%20sql%20en%20la%20pagina.png)
+![Docker Desktop con los contenedores](evidencias/captura%20de%20los%20dos%20contenedores%20.png)
